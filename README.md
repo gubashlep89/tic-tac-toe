@@ -1,5 +1,22 @@
 # README
 
+## Requirements
+- Ruby 3.1.2
+- Rails 7.0.8.4
+- Bundler 2.3.7
+
+## How to run
+- $bundle install
+- $rails db:create
+- $rails db:migrate
+- $rails assets:precompile
+- $rails s
+- go to http://localhost:3000/
+- have fun :)
+
+## How to run test
+- $rspec
+
 ## Reflection
 
 ### I usually start projects from planning:

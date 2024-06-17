@@ -13,7 +13,10 @@
       <% (1..9).each do |i| %>
         <div class="cell" data-cell>
           <% if @game.send("field#{i}_empty?") %>
-            <%= link_to icon_name(@game.current_player), game_path(@game, field_index: i), data: { 'turbo-method': :put }, class: 'material-icons icon icon-white' %>
+            <%= form_with url: game_path(@game, field_index: i), method: :put do |form| %>
+              <%= form.submit '', class: 'step-button' do %>c
+              <% end %>
+            <% end %>
           <% else %>
             <i class="material-icons icon <%= winning_class(@game.win_condition, i) %>"><%= icon_name(@game.send("field#{i}")) %></i>
           <% end %>
