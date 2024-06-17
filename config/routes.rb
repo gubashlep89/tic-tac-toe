@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'games#new'
+  resources :games, except: %i[index edit destroy] do
+    scope module: :games do
+      resources :restarts, only: :create
+    end
+  end
 end

@@ -1,0 +1,33 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Naming/VariableNumber:
+  Enabled: false
+Rails/SkipsModelValidations:
+  Enabled: false
+Style/SymbolLiteral:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*.rb'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '**/*.gemspec'
+Metrics/MethodLength:
+  Enabled: false

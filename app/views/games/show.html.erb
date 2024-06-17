@@ -1,0 +1,32 @@
+<div class="mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title">
+    <% if @game.winner %>
+      <h1 class="mdl-card__title-text winner-text">Winner: <%= @game.winner.name %></h1>
+    <% elsif @game.draw?%>
+      <h1 class="mdl-card__title-text draw-text">Draw in the game</h1>
+    <% else %>
+      <h2 class="mdl-card__title-text"><%= @game.player_name %>'s turn</h2>
+    <% end %>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <div class="board">
+      <% (1..9).each do |i| %>
+        <div class="cell" data-cell>
+          <% if @game.send("field#{i}_empty?") %>
+            <%= link_to icon_name(@game.current_player), game_path(@game, field_index: i), data: { 'turbo-method': :put }, class: 'material-icons icon icon-white' %>
+          <% else %>
+            <i class="material-icons icon <%= winning_class(@game.win_condition, i) %>"><%= icon_name(@game.send("field#{i}")) %></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="mdl-card__actions">
+    <%= form_with url: game_restarts_path(@game) do |form| %>
+      <%= form.submit 'Restart', class: 'mdl-button mdl-js-button mdl-button--raised' %>
+    <% end %>
+    <%= form_with url: new_game_path, method: :get do |form| %>
+      <%= form.submit 'New game', class: 'mdl-button mdl-js-button mdl-button--raised' %>
+    <% end %>
+  </div>
+</div>

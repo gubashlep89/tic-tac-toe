@@ -1,0 +1,20 @@
+<div class="mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Tic-tac-toe</h2>
+  </div>
+  <%= form_with url: games_path, method: :post do |form| %>
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= form.text_field :player1, class: 'mdl-textfield__input', id: 'textfield1' %>
+        <%= form.label :player1, { class: 'mdl-textfield__label' } %>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= form.text_field :player2, class: 'mdl-textfield__input', id: 'textfield1' %>
+        <%= form.label :player2, { class: 'mdl-textfield__label' } %>
+      </div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <%= form.submit 'Start!', class: 'mdl-button mdl-js-button mdl-button--raised' %>
+    </div>
+  <% end %>
+</div>
